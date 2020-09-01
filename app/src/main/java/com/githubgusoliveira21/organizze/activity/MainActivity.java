@@ -1,4 +1,4 @@
-package com.githubgusoliveira21.organizze;
+package com.githubgusoliveira21.organizze.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.activity.CadastroActivity;
 import com.githubgusoliveira21.organizze.activity.LoginActivity;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
@@ -54,9 +55,13 @@ public class MainActivity extends IntroActivity {
                 .fragment(R.layout.intro_cadastro)
                 .canGoForward(false)
                 .build());
-
-
     }
+
+
+
+
+
+
 
 public void btEntrar(View view){
     startActivity(new Intent(this, LoginActivity.class));
