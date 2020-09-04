@@ -17,6 +17,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -56,24 +59,17 @@ public class CadastroActivity extends AppCompatActivity {
                             usuario.setEmail(textoEmail);
                             usuario.setSenha(textoSenha);
                             cadastrarUsuario(usuario.getNome(), usuario.getSenha());
-                        }else{
+                        }
+                        else{
                             campoSenha.setError("Preencha o campo com sua senha!");
-
-                            /*Toast.makeText(CadastroActivity.this,
-                                    "Preencha a Senha!",
-                                    Toast.LENGTH_SHORT).show();*/}
-
-                    }else{
-                        campoEmail.setError("Preencha o campo com seu Email!");
-                        /*Toast.makeText(CadastroActivity.this,
-                                "Preencha o Email!",
-                                Toast.LENGTH_SHORT).show();*/
+                        }
                     }
-                }else{
+                    else{
+                        campoEmail.setError("Preencha o campo com seu Email!");
+                    }
+                }
+                else{
                     campoNome.setError("Preencha o campo com seu Nome!");
-                    /*Toast.makeText(CadastroActivity.this,
-                            "Preencha o nome!",
-                            Toast.LENGTH_SHORT).show();*/
                 }
             }
         });
@@ -92,9 +88,52 @@ public class CadastroActivity extends AppCompatActivity {
                             "Cadastro efetuado com sucesso!",
                             Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(CadastroActivity.this,
-                            "Erro ao efetuar cadastro!",
-                            Toast.LENGTH_SHORT).show();
+                    String excecao ="";
+                    try{
+                        throw task.getException();
+                    }
+
+
+
+                    catch (FirebaseAuthWeakPasswordException e)
+                    {
+                       excecao = "Digite uma senha mais forte!";
+                       //campoSenha.setError("Digite uma senha válida!");
+                    }
+
+
+                    catch (FirebaseAuthUserCollisionException e)
+                    {
+                       excecao = "Esse email já existe em nossa base de dados!";
+                       //campoEmail.setError("Esse e-mail já está registrado!");
+                    }
+
+
+
+
+                    catch (FirebaseAuthInvalidCredentialsException e){
+                       excecao = "Digite um e-mail válido!";
+                       //campoEmail.setError("Diga um e-mail válido!");
+                    }
+
+
+                    catch (Exception e){
+                        //Toast.makeText(CadastroActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                        excecao = "Erro ao cadastrar usuário: " + e.getMessage();
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
+
+                    //FirebaseAuthUserCollisionException
+
+                    /*Toast.makeText(
+                            CadastroActivity.this,
+                            "Erro ao cadastrar usuário",
+                            Toast.LENGTH_LONG).show();*/
+
+                    //e.printStackTrace();*
                 }
             }
         })
