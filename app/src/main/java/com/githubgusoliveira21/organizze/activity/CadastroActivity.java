@@ -58,7 +58,7 @@ public class CadastroActivity extends AppCompatActivity {
                             usuario.setNome(textoNome);
                             usuario.setEmail(textoEmail);
                             usuario.setSenha(textoSenha);
-                            cadastrarUsuario(usuario.getNome(), usuario.getSenha());
+                            cadastrarUsuario(usuario.getEmail(), usuario.getSenha());
                         }
                         else{
                             campoSenha.setError("Preencha o campo com sua senha!");
@@ -77,64 +77,53 @@ public class CadastroActivity extends AppCompatActivity {
 
 
 
-    public void cadastrarUsuario(String usuario, String senha){
+    public void cadastrarUsuario(String usuario, String senha)
+    {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(usuario,senha)
         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                 if(task.isSuccessful()){
                     Toast.makeText(CadastroActivity.this,
                             "Cadastro efetuado com sucesso!",
                             Toast.LENGTH_SHORT).show();
                 }else{
-                    String excecao ="";
+                    //String excecao = "";
                     try{
                         throw task.getException();
                     }
 
-
-
                     catch (FirebaseAuthWeakPasswordException e)
                     {
-                       excecao = "Digite uma senha mais forte!";
-                       //campoSenha.setError("Digite uma senha válida!");
+                       //excecao = "Digite uma senha mais forte!";
+                       campoSenha.setError("Digite uma senha válida!");
                     }
-
-
                     catch (FirebaseAuthUserCollisionException e)
                     {
-                       excecao = "Esse email já existe em nossa base de dados!";
-                       //campoEmail.setError("Esse e-mail já está registrado!");
+                       //excecao = "Esse email já existe em nossa base de dados!";
+                       campoEmail.setError("Esse e-mail já está registrado!");
                     }
-
-
-
-
                     catch (FirebaseAuthInvalidCredentialsException e){
-                       excecao = "Digite um e-mail válido!";
-                       //campoEmail.setError("Diga um e-mail válido!");
+                       //excecao = "Digite um e-mail válido!";
+                       campoEmail.setError("Diga um e-mail válido!");
                     }
-
-
                     catch (Exception e){
-                        //Toast.makeText(CadastroActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(CadastroActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
 
-                        excecao = "Erro ao cadastrar usuário: " + e.getMessage();
+                        //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
 
-                    //FirebaseAuthUserCollisionException
-
-                    /*Toast.makeText(
-                            CadastroActivity.this,
-                            "Erro ao cadastrar usuário",
-                            Toast.LENGTH_LONG).show();*/
-
-                    //e.printStackTrace();*
                 }
+
+
+
+
+
             }
         })
         ;

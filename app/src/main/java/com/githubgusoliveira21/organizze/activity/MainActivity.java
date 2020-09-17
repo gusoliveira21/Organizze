@@ -28,7 +28,7 @@ public class MainActivity extends IntroActivity {
         //setContentView(R.layout.activity_main);
         setButtonBackVisible(false);
         setButtonNextVisible(false);
-/*
+
         //Primeira tela do slide
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorIntro_1)
@@ -48,7 +48,7 @@ public class MainActivity extends IntroActivity {
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorIntro_4)
                 .fragment(R.layout.intro_4)
-                .build());*/
+                .build());
 
 
         //Quinta tela do slide: Cadastro
