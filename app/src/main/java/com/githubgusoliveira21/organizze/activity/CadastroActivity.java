@@ -25,8 +25,8 @@ public class CadastroActivity extends AppCompatActivity {
 
     private EditText campoNome,campoEmail, campoSenha;
     private Button botaoCadastrar;
-    private FirebaseAuth autenticacao;
     private Usuario usuario;
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

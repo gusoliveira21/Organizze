@@ -17,9 +17,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText campoEmail, campoSenha;
@@ -39,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         campoEmail = findViewById(R.id.editEmail);
         campoSenha = findViewById(R.id.editSenha);
-        botaoEntrar = findViewById(R.id.buttonCadastrar);
+        botaoEntrar = findViewById(R.id.buttonEntrar);
 
 
         botaoEntrar.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 String textoEmail = campoEmail.getText().toString();
                 String textoSenha = campoSenha.getText().toString();
                 vaidarLogin();
+
                 if(!textoEmail.isEmpty()){
                     if(!textoSenha.isEmpty()){
                         usuario = new Usuario();
@@ -65,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     public  void vaidarLogin(){
 
     autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
