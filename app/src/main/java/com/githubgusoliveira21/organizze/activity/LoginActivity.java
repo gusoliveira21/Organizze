@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         //Remove a barra de status que contém a hora, data, notificações
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -79,31 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         "Erro no l,ogin!",
                         Toast.LENGTH_SHORT).show();
             }
-                /*/String excecao = "";
-                try{
-                    throw task.getException();
-                }
 
-                catch (FirebaseAuthWeakPasswordException e)
-                {
-                    //excecao = "Digite uma senha mais forte!";
-                    campoSenha.setError("Digite uma senha válida!");
-                }
-                catch (FirebaseAuthUserCollisionException e)
-                {
-                    //excecao = "Esse email já existe em nossa base de dados!";
-                    campoEmail.setError("Esse e-mail já está registrado!");
-                }
-                catch (FirebaseAuthInvalidCredentialsException e){
-                    //excecao = "Digite um e-mail válido!";
-                    campoEmail.setError("Diga um e-mail válido!");
-                }
-                catch (Exception e){
-                    Toast.makeText(LoginActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
-
-                    //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
-                    e.printStackTrace();
-                }*/
         }
     });
 
