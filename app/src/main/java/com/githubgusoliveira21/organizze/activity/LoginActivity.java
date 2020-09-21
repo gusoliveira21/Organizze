@@ -3,6 +3,7 @@ package com.githubgusoliveira21.organizze.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -43,13 +44,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 String textoEmail = campoEmail.getText().toString();
                 String textoSenha = campoSenha.getText().toString();
-                vaidarLogin();
+
 
                 if(!textoEmail.isEmpty()){
                     if(!textoSenha.isEmpty()){
                         usuario = new Usuario();
                         usuario.setEmail(textoEmail);
                         usuario.setSenha(textoSenha);
+                        validarLogin();
                     }
                     else{
                         campoSenha.setError("Preencha o campo com sua senha!");
@@ -62,52 +64,29 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public  void vaidarLogin(){
-
+    public  void validarLogin(){
     autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-    autenticacao.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    autenticacao.signInWithEmailAndPassword(usuario.getEmail(),
+                                            usuario.getSenha())
+                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                                            {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
-                Toast.makeText(LoginActivity.this,
-                        "Login efetuado com sucesso!",
-                        Toast.LENGTH_SHORT).show();
+                abrirTelaPrincipal();
             }else{
-
                 Toast.makeText(LoginActivity.this,
-                        "Erro no l,ogin!",
+                        "Erro no login!",
                         Toast.LENGTH_SHORT).show();
             }
-                /*/String excecao = "";
-                try{
-                    throw task.getException();
-                }
-
-                catch (FirebaseAuthWeakPasswordException e)
-                {
-                    //excecao = "Digite uma senha mais forte!";
-                    campoSenha.setError("Digite uma senha válida!");
-                }
-                catch (FirebaseAuthUserCollisionException e)
-                {
-                    //excecao = "Esse email já existe em nossa base de dados!";
-                    campoEmail.setError("Esse e-mail já está registrado!");
-                }
-                catch (FirebaseAuthInvalidCredentialsException e){
-                    //excecao = "Digite um e-mail válido!";
-                    campoEmail.setError("Diga um e-mail válido!");
-                }
-                catch (Exception e){
-                    Toast.makeText(LoginActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
-
-                    //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
-                    e.printStackTrace();
-                }*/
         }
     });
 
     }
-
+public void abrirTelaPrincipal(){
+        startActivity(new Intent(this, PrincipalActivity.class));
+        finish();
+    }
 
 
 

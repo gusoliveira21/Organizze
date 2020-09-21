@@ -11,12 +11,14 @@ import android.view.WindowManager;
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.activity.CadastroActivity;
 import com.githubgusoliveira21.organizze.activity.LoginActivity;
+import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 public class MainActivity extends IntroActivity {
-
+    private FirebaseAuth autenticacao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +51,6 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.colorIntro_4)
                 .fragment(R.layout.intro_4)
                 .build());
-
-
         //Quinta tela do slide: Cadastro
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorIntro_5)
@@ -59,9 +59,13 @@ public class MainActivity extends IntroActivity {
                 .build());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        verificarUsuarioLogado();
+    }
 
-
-public void btEntrar(View view){
+    public void btEntrar(View view){
     startActivity(new Intent(this, LoginActivity.class));
 }
 
@@ -69,6 +73,15 @@ public void btCadastrar(View view) {
     startActivity(new Intent(this, CadastroActivity.class));
 }
 
+public void verificarUsuarioLogado(){
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        if(autenticacao.getCurrentUser() != null){
+            abrirTelaPrincipal();
+        };
+}
 
+ public void abrirTelaPrincipal() {
+        startActivity(new Intent(this, PrincipalActivity.class));
+    }
 
 }

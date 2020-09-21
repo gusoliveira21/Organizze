@@ -86,15 +86,12 @@ public class CadastroActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-                    Toast.makeText(CadastroActivity.this,
-                            "Cadastro efetuado com sucesso!",
-                            Toast.LENGTH_SHORT).show();
+                    finish();
                 }else{
                     //String excecao = "";
                     try{
                         throw task.getException();
                     }
-
                     catch (FirebaseAuthWeakPasswordException e)
                     {
                        //excecao = "Digite uma senha mais forte!";
@@ -115,7 +112,7 @@ public class CadastroActivity extends AppCompatActivity {
                         //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
                         e.printStackTrace();
                     }
-
+                    //Como não to usando a variavel excessao, não preciso usar essa linha
                     //Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
 
                 }
