@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         //Remove a barra de status que contém a hora, data, notificações
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -79,6 +81,10 @@ public class LoginActivity extends AppCompatActivity {
                         "Erro no login!",
                         Toast.LENGTH_SHORT).show();
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59e8fafadf9a213cc8a8d6e025369d2d94b0fc62
         }
     });
 
