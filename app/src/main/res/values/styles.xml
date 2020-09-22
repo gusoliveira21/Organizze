@@ -1,15 +1,36 @@
 <resources>
     <!-- Base application theme. -->
     <!-- Theme original. -->
-    <!--style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"-->
-    <!-- Theme sem actionBar e background da cor branca. -->
+    <!--style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"!-->
+    <!-- Theme sem actionBar e background da cor branca. !-->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Theme que faz a activity ser exibida como uma janela de diálogo. -->
-        <!--style name="AppTheme" parent="Theme.AppCompat.Light.Dialog.Alert"-->
+        <!-- Theme que faz a activity ser exibida como uma janela de diálogo. !-->
+        <!--style name="AppTheme" parent="Theme.AppCompat.Light.Dialog.Alert"!-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+<!--Tema para despesas!-->
+    <style name="despesasTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/buttonFloatDespesaMedio</item>
+        <item name="colorPrimaryDark">@color/buttonFloatDespesaDark</item>
+        <item name="colorAccent">@color/buttonFloatDespesaClaro</item>
+    </style>
+
+
+    <!--Tema para receitas!-->
+    <style name="receitasTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/buttonFloatReceitaMedio</item>
+        <item name="colorPrimaryDark">@color/buttonFloatReceitaDark</item>
+        <item name="colorAccent">@color/buttonFloatReceitaClaro</item>
+    </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

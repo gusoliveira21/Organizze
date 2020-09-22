@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <color name="colorPrimary">#01C7D2</color>
-        <color name="colorPrimaryDark">#00b2bc</color>
+        <color name="colorPrimaryDark">#12B3BC</color>
         <!--Define a cor dos detalhes das caixas de texto-->
         <color name="colorAccent">#ff706a</color>
 
+        <!--Cores dos slides-->
         <color name="colorIntro_1">#D8BFD8</color>
         <color name="colorIntro_2">#E0FFFF</color>
         <color name="colorIntro_3">#EFEABE</color>
         <color name="colorIntro_4">#93CEFD</color>
         <color name="colorIntro_5">#C9EDCA</color>
 
+        <!--Cor dos textos-->
         <color name="colorText">#000000</color>
         <color name="colorSubText">#696969</color>
 
         <color name="colorAssets">#A9A9A9</color>
+
+        <!--Cor FloatButton-->
+        <color name="buttonFloatDespesaDark">#F44343</color>
+        <color name="buttonFloatDespesaMedio">#EF4343</color>
+        <color name="buttonFloatDespesaClaro">#F35252</color>
+
+        <color name="buttonFloatReceitaDark">#6DD340</color>
+        <color name="buttonFloatReceitaMedio">#7BD852</color>
+        <color name="buttonFloatReceitaClaro">#8DDD6A</color>
+
 </resources>
