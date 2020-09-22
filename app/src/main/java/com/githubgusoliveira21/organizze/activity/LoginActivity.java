@@ -81,10 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         "Erro no login!",
                         Toast.LENGTH_SHORT).show();
             }
-<<<<<<< HEAD
-=======
 
->>>>>>> 59e8fafadf9a213cc8a8d6e025369d2d94b0fc62
         }
     });
 
