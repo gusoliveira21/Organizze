@@ -46,6 +46,8 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.colorIntro_3)
                 .fragment(R.layout.intro_3)
                 .build());
+
+
         //Quarta tela do slide
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorIntro_4)
@@ -69,12 +71,13 @@ public class MainActivity extends IntroActivity {
     startActivity(new Intent(this, LoginActivity.class));
 }
 
-public void btCadastrar(View view) {
+    public void btCadastrar(View view) {
     startActivity(new Intent(this, CadastroActivity.class));
 }
 
-public void verificarUsuarioLogado(){
+    public void verificarUsuarioLogado(){
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        //autenticacao.signOut();
         if(autenticacao.getCurrentUser() != null){
             abrirTelaPrincipal();
         };

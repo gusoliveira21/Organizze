@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
+import com.githubgusoliveira21.organizze.helper.Base64Custom;
 import com.githubgusoliveira21.organizze.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -58,7 +59,7 @@ public class CadastroActivity extends AppCompatActivity {
                             usuario.setNome(textoNome);
                             usuario.setEmail(textoEmail);
                             usuario.setSenha(textoSenha);
-                            cadastrarUsuario(usuario.getEmail(), usuario.getSenha());
+                            cadastrarUsuario();
                         }
                         else{
                             campoSenha.setError("Preencha o campo com sua senha!");
@@ -77,16 +78,22 @@ public class CadastroActivity extends AppCompatActivity {
 
 
 
-    public void cadastrarUsuario(String usuario, String senha)
+    public void cadastrarUsuario()
     {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        autenticacao.createUserWithEmailAndPassword(usuario,senha)
+        autenticacao.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha())
         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
+
+                    String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setIdUsuario(idUsuario);
+                    usuario.salvar();
+
                     finish();
+
                 }else{
                     //String excecao = "";
                     try{
@@ -112,6 +119,7 @@ public class CadastroActivity extends AppCompatActivity {
                         //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
                         e.printStackTrace();
                     }
+
                     //Como não to usando a variavel excessao, não preciso usar essa linha
                     //Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
 

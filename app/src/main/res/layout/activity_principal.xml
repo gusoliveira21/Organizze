@@ -58,6 +58,8 @@
             android:onClick="adicionarReceita"
             fab:fab_size="mini" />
 
+
+
     </com.github.clans.fab.FloatingActionMenu>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

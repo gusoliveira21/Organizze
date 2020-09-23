@@ -12,8 +12,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import com.githubgusoliveira21.organizze.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PrincipalActivity extends AppCompatActivity {
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,4 +40,6 @@ public class PrincipalActivity extends AppCompatActivity {
     public void adicionarReceita(View view){
         startActivity(new Intent(this, ReceitasActivity.class));
     }
+
+
 }
