@@ -46,6 +46,7 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ex: 13/05/1996" />
@@ -63,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ex: salário" />
@@ -87,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        android:onClick="salvarReceita"
         android:padding="16dp"
         app:fab_colorNormal="@color/buttonFloatReceitaMedio"
         app:fab_colorPressed="@color/buttonFloatReceitaClaro"

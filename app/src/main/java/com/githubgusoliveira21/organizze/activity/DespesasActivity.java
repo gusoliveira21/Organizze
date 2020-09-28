@@ -27,10 +27,10 @@ public class DespesasActivity extends AppCompatActivity {
     private TextInputEditText campoData, campoDescricao, campoCategoria;
     private EditText campoValor;
     private Movimentacao movimentacao;
-    private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-    private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
     private Double despesaTotal;
     private Double despesaAtualizada;
+    private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+    private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
 
     @Override
@@ -54,13 +54,12 @@ public class DespesasActivity extends AppCompatActivity {
 
         if(validarCamposDespesa()){
 
-            movimentacao = new Movimentacao();
             String data = campoData.getText().toString();
-
             double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
-            movimentacao.setValor(valorRecuperado);
 
-            movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
+            //movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
+            movimentacao = new Movimentacao();
+            movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
             movimentacao.setData(data);

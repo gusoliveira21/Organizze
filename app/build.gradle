@@ -43,6 +43,9 @@ dependencies {
     //material-intro
     implementation 'com.heinrichreimersoftware:material-intro:1.6'
 
+    //material-calendarview
+    implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
+
 }
 
 apply plugin: 'com.android.application'
