@@ -46,8 +46,6 @@ public class MainActivity extends IntroActivity {
                 .background(R.color.colorIntro_3)
                 .fragment(R.layout.intro_3)
                 .build());
-
-
         //Quarta tela do slide
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorIntro_4)

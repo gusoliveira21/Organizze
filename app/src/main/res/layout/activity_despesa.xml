@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:onClick="salvarReceita"
+        android:onClick="salvarDespesa"
         android:padding="16dp"
         app:fab_colorNormal="@color/buttonFloatDespesaMedio"
         app:fab_colorPressed="@color/buttonFloatDespesaClaro"
