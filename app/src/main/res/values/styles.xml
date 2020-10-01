@@ -16,9 +16,9 @@
     <style name="despesasTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/buttonFloatDespesaMedio</item>
-        <item name="colorPrimaryDark">@color/buttonFloatDespesaDark</item>
-        <item name="colorAccent">@color/buttonFloatDespesaClaro</item>
+        <item name="colorPrimary">@color/DespesaMedio</item>
+        <item name="colorPrimaryDark">@color/DespesaDark</item>
+        <item name="colorAccent">@color/DespesaClaro</item>
     </style>
 
 
@@ -26,9 +26,9 @@
     <style name="receitasTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/buttonFloatReceitaMedio</item>
-        <item name="colorPrimaryDark">@color/buttonFloatReceitaDark</item>
-        <item name="colorAccent">@color/buttonFloatReceitaClaro</item>
+        <item name="colorPrimary">@color/ReceitaMedio</item>
+        <item name="colorPrimaryDark">@color/ReceitaDark</item>
+        <item name="colorAccent">@color/ReceitaClaro</item>
     </style>
 
 

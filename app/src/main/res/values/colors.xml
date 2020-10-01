@@ -19,12 +19,12 @@
         <color name="colorAssets">#A9A9A9</color>
 
         <!--Cor FloatButton-->
-        <color name="buttonFloatDespesaDark">#F44343</color>
-        <color name="buttonFloatDespesaMedio">#EF4343</color>
-        <color name="buttonFloatDespesaClaro">#F35252</color>
+        <color name="DespesaDark">#F44343</color>
+        <color name="DespesaMedio">#EF4343</color>
+        <color name="DespesaClaro">#F35252</color>
 
-        <color name="buttonFloatReceitaDark">#6DD340</color>
-        <color name="buttonFloatReceitaMedio">#7BD852</color>
-        <color name="buttonFloatReceitaClaro">#8DDD6A</color>
+        <color name="ReceitaDark">#6DD340</color>
+        <color name="ReceitaMedio">#7BD852</color>
+        <color name="ReceitaClaro">#8DDD6A</color>
 
 </resources>

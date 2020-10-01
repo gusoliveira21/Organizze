@@ -1,12 +1,12 @@
 package com.githubgusoliveira21.organizze.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
@@ -63,7 +63,7 @@ public class ReceitasActivity extends AppCompatActivity {
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
             movimentacao.setData(data);
-            movimentacao.setTipo("d");
+            movimentacao.setTipo("r");
 
             receitaAtualizada = receitaTotal + valorRecuperado;
             atualizarReceita(receitaAtualizada);

@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_add"
-            app:fab_colorNormal="@color/buttonFloatDespesaMedio"
-            app:fab_colorPressed="@color/buttonFloatDespesaClaro"
+            app:fab_colorNormal="@color/DespesaMedio"
+            app:fab_colorPressed="@color/DespesaClaro"
             fab:fab_label="Despesa"
             android:onClick="adicionarDespesa"
             fab:fab_size="mini" />
@@ -56,8 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_add"
-            app:fab_colorNormal="@color/buttonFloatReceitaMedio"
-            app:fab_colorPressed="@color/buttonFloatReceitaClaro"
+            app:fab_colorNormal="@color/ReceitaMedio"
+            app:fab_colorPressed="@color/ReceitaClaro"
             fab:fab_label="Receita"
             android:onClick="adicionarReceita"
             fab:fab_size="mini" />
