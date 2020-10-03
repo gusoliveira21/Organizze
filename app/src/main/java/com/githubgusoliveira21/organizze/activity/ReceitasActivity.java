@@ -38,7 +38,7 @@ public class ReceitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receitas);
 
-        campoData = findViewById(R.id.editData);
+        campoData = findViewById(R.id.editDataReceitas);
         campoCategoria = findViewById(R.id.editCategoria);
         campoDescricao= findViewById(R.id.editDescricao);
         campoValor= findViewById(R.id.campoValor);
@@ -62,31 +62,27 @@ public class ReceitasActivity extends AppCompatActivity {
             movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
-            movimentacao.setData(data);
+            //movimentacao.setData(data);
+            movimentacao.setData(campoData.getText().toString());
             movimentacao.setTipo("r");
 
             receitaAtualizada = receitaTotal + valorRecuperado;
             atualizarReceita(receitaAtualizada);
 
-            movimentacao.salvar(data);
+            //movimentacao.salvar(data);
+            movimentacao.salvar( campoData.getText().toString());
 
             finish();
             Toast.makeText(this, "Receita Inserida!", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     };
 
     public boolean validarCamposReceita(){
-
 
         String textoValor = campoValor.getText().toString();
         String textoData = campoData.getText().toString();
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
-
 
         campoData.setText(DateCustom.dataAtual());
 
@@ -128,9 +124,7 @@ public class ReceitasActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario usuario = dataSnapshot.getValue(Usuario.class);
                 receitaTotal = usuario.getReceitaTotal();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -138,7 +132,6 @@ public class ReceitasActivity extends AppCompatActivity {
         });
 
     }
-
 
     public void atualizarReceita(Double receita){
         String emailUsuario = autenticacao.getCurrentUser().getEmail();

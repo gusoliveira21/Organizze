@@ -17,15 +17,12 @@ public class Movimentacao {
     public Movimentacao() {
     }
 
-
-
-
-
     public void salvar(String dataEscolhida){
 
         FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         String idUduario = Base64Custom.codificarBase64(autenticacao.getCurrentUser().getEmail());
-        String mesAno = DateCustom.mesAnoDataEscolhida(dataEscolhida);
+
+        String mesAno = DateCustom.mesAnoDataEscolhida( dataEscolhida );
 
         DatabaseReference firebase = ConfiguracaoFirebase.getFirebaseDatabase();
         firebase.child("movimentacoes")

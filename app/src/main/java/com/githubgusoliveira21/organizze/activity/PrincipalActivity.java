@@ -279,6 +279,8 @@ public class PrincipalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     public void adicionarDespesa(View view){
         startActivity(new Intent(this, DespesasActivity.class));
 

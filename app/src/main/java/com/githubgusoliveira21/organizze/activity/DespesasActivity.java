@@ -1,13 +1,12 @@
 package com.githubgusoliveira21.organizze.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
@@ -29,6 +28,7 @@ public class DespesasActivity extends AppCompatActivity {
     private Movimentacao movimentacao;
     private Double despesaTotal;
     private Double despesaAtualizada;
+    private String data;
     private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
     private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
@@ -38,7 +38,7 @@ public class DespesasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesa);
 
-        campoData = findViewById(R.id.editData);
+        campoData = findViewById(R.id.editDataDespesa);
         campoCategoria = findViewById(R.id.editCategoria);
         campoDescricao= findViewById(R.id.editDescricao);
         campoValor= findViewById(R.id.campoValor);
@@ -46,15 +46,21 @@ public class DespesasActivity extends AppCompatActivity {
         //Preenche o campo data com a data atual
         campoData.setText(DateCustom.dataAtual());
 
+        Toast.makeText(this, "Depois: " + campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+
         recuperarDespesaTotal();
 
     };
 
     public void salvarDespesa(View view){
-
         if(validarCamposDespesa()){
 
-            String data = campoData.getText().toString();
+            Toast.makeText(this, "Salvar: "+campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+
+            data = campoData.getText().toString();
+
+            Toast.makeText(this, "Salvar: "+campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+
             double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
 
             //movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
@@ -72,20 +78,13 @@ public class DespesasActivity extends AppCompatActivity {
             finish();
             Toast.makeText(this, "Despesa Inserida!", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     };
 
     public boolean validarCamposDespesa(){
-
-
         String textoValor = campoValor.getText().toString();
         String textoData = campoData.getText().toString();
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
-
 
         campoData.setText(DateCustom.dataAtual());
 
@@ -110,12 +109,7 @@ public class DespesasActivity extends AppCompatActivity {
             msgErro();
             campoValor.setError("Diga um valor");
             return false;}
-
     };
-
-    public void msgErro(){
-        Toast.makeText(this, "Preencha os campos!", Toast.LENGTH_LONG).show();
-    }
 
     public void recuperarDespesaTotal(){
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
@@ -138,6 +132,9 @@ public class DespesasActivity extends AppCompatActivity {
 
     }
 
+    public void msgErro(){
+        Toast.makeText(this, "Preencha os campos!", Toast.LENGTH_LONG).show();
+    }
 
     public void atualizarDespesa(Double despesa){
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
