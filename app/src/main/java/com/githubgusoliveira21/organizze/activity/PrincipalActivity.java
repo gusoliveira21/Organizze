@@ -39,40 +39,39 @@ import java.util.List;
 
 public class PrincipalActivity extends AppCompatActivity {
 
+    private MaterialCalendarView calendarView;
+    private TextView textoSaudacao, textoSaldo;
+    private Double despesaTotal = 0.0;
+    private Double receitaTotal = 0.0;
+    private Double resumoUsuario = 0.0;
+
     private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
     private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-    private DatabaseReference movimentacaoRef;
     private DatabaseReference usuarioRef;
-    private  ValueEventListener valueEventListenerUsuario;
+    private ValueEventListener valueEventListenerUsuario;
     private ValueEventListener valueEventListenerMovimentacoes;
-
-    private MaterialCalendarView calendarioView;
-    private TextView textoSaudacao, textoSaldo;
-    private double despesaTotal = 0.0;
-    private double receitaTotal = 0.0;
-    private double resumoUsuario = 0.0;
-    private String mesAnoSelecionado;
-
 
     private RecyclerView recyclerView;
     private AdapterMovimentacao adapterMovimentacao;
     private List<Movimentacao> movimentacoes = new ArrayList<>();
-
     private Movimentacao movimentacao;
+    private DatabaseReference movimentacaoRef;
+    private String mesAnoSelecionado;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Organizze");
+        toolbar.setTitle("Organize-se");
         setSupportActionBar(toolbar);
+
+        Toast.makeText(this, "On Create!", Toast.LENGTH_SHORT).show();
 
         textoSaudacao = findViewById(R.id.textSaudacao);
         textoSaldo = findViewById(R.id.textSaldo);
-        calendarioView = findViewById(R.id.calendarView);
+        calendarView = findViewById(R.id.calendarView);
         recyclerView = findViewById(R.id.recyclerMovimentos);
         configuraCalendarView();
         swipe();
@@ -92,6 +91,8 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Toast.makeText(this, "On Start!", Toast.LENGTH_SHORT).show();
+
         recuperaResumo();
         recuperarMovimentacoes();
     }
@@ -99,7 +100,9 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("Evento", "Ciclo onStop: Ouvinte Stopado!");
+
+        Toast.makeText(this, "On Stop!", Toast.LENGTH_SHORT).show();
+
         usuarioRef.removeEventListener(valueEventListenerUsuario);
         movimentacaoRef.removeEventListener(valueEventListenerMovimentacoes);
     }
@@ -241,17 +244,17 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void configuraCalendarView(){
         CharSequence meses[] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
-        calendarioView.setTitleMonths(meses);
-        CalendarDay dataAtual = calendarioView.getCurrentDate();
+        calendarView.setTitleMonths(meses);
+        CalendarDay dataAtual = calendarView.getCurrentDate();
 
-        String mesSelecionado = String.format("%02d",(dataAtual.getMonth()+1));
+        String mesSelecionado = String.format("%02d",(dataAtual.getMonth() + 1));
         mesAnoSelecionado = String.valueOf( mesSelecionado+ "" + dataAtual.getYear());
 
-        calendarioView.setOnMonthChangedListener(new OnMonthChangedListener() {
+        calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 String mesSelecionado = String.format("%02d",(date.getMonth() + 1));
-                mesAnoSelecionado =  String.valueOf((date.getMonth() + 1) + "" + date.getYear());
+                mesAnoSelecionado =  String.valueOf((mesSelecionado) + "" + date.getYear());
 
                 movimentacaoRef.removeEventListener(valueEventListenerMovimentacoes);
                 recuperarMovimentacoes();

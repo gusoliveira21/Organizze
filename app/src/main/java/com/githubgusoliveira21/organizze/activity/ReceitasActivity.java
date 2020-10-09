@@ -52,9 +52,15 @@ public class ReceitasActivity extends AppCompatActivity {
 
     public void salvarReceita(View view){
 
+            Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+
         if(validarCamposReceita()){
 
+
             String data = campoData.getText().toString();
+
+            Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+
             double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
 
             //movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
@@ -62,8 +68,8 @@ public class ReceitasActivity extends AppCompatActivity {
             movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
             movimentacao.setDescricao(campoDescricao.getText().toString());
-            //movimentacao.setData(data);
-            movimentacao.setData(campoData.getText().toString());
+            movimentacao.setData(data);
+            //movimentacao.setData(campoData.getText().toString());
             movimentacao.setTipo("r");
 
             receitaAtualizada = receitaTotal + valorRecuperado;
@@ -83,8 +89,6 @@ public class ReceitasActivity extends AppCompatActivity {
         String textoData = campoData.getText().toString();
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
-
-        campoData.setText(DateCustom.dataAtual());
 
         if (!textoValor.isEmpty()){
             if(!textoCategoria.isEmpty()){
