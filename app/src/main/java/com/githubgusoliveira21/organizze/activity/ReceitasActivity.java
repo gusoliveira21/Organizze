@@ -52,7 +52,7 @@ public class ReceitasActivity extends AppCompatActivity {
 
     public void salvarReceita(View view){
 
-            Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
 
         if(validarCamposReceita()){
 

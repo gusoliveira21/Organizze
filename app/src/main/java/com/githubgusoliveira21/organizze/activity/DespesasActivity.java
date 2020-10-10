@@ -88,17 +88,17 @@ public class DespesasActivity extends AppCompatActivity {
 
         if (!textoValor.isEmpty()){
             if(!textoCategoria.isEmpty()){
-               if(!textoDescricao.isEmpty()){
-                   if(!textoData.isEmpty()){
+                if(!textoDescricao.isEmpty()){
+                    if(!textoData.isEmpty()){
                         return true;
                     }else{
-                       msgErro();
-                       campoData.setError("Diga uma data");
-                       return false;}
+                        msgErro();
+                        campoData.setError("Diga uma data");
+                        return false;}
                 }else{
-                   msgErro();
-                   campoDescricao.setError("Diga uma descrição");
-                   return false;}
+                    msgErro();
+                    campoDescricao.setError("Diga uma descrição");
+                    return false;}
             }else{
                 msgErro();
                 campoCategoria.setError("Diga uma categoria\nex:Água, Luz, Telefone, Internet");

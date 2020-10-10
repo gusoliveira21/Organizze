@@ -1,21 +1,15 @@
 package com.githubgusoliveira21.organizze.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.githubgusoliveira21.organizze.R;
-import com.githubgusoliveira21.organizze.activity.CadastroActivity;
-import com.githubgusoliveira21.organizze.activity.LoginActivity;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 public class MainActivity extends IntroActivity {
     private FirebaseAuth autenticacao;
@@ -66,12 +60,12 @@ public class MainActivity extends IntroActivity {
     }
 
     public void btEntrar(View view){
-    startActivity(new Intent(this, LoginActivity.class));
-}
+        startActivity(new Intent(this, LoginActivity.class));
+    }
 
     public void btCadastrar(View view) {
-    startActivity(new Intent(this, CadastroActivity.class));
-}
+        startActivity(new Intent(this, CadastroActivity.class));
+    }
 
     public void verificarUsuarioLogado(){
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -79,9 +73,9 @@ public class MainActivity extends IntroActivity {
         if(autenticacao.getCurrentUser() != null){
             abrirTelaPrincipal();
         };
-}
+    }
 
- public void abrirTelaPrincipal() {
+    public void abrirTelaPrincipal() {
         startActivity(new Intent(this, PrincipalActivity.class));
     }
 

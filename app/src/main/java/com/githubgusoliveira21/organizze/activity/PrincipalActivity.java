@@ -148,8 +148,8 @@ public class PrincipalActivity extends AppCompatActivity {
                 String emailUsuario = autenticacao.getCurrentUser().getEmail();
                 String idUsuario = Base64Custom.codificarBase64(emailUsuario);
                 movimentacaoRef = firebaseRef.child("movimentacoes")
-                                             .child(idUsuario)
-                                             .child(mesAnoSelecionado);
+                        .child(idUsuario)
+                        .child(mesAnoSelecionado);
                 movimentacaoRef.child( movimentacao.getKey() ).removeValue();
                 adapterMovimentacao.notifyItemRemoved( position );
                 atualizarSaldo();
@@ -191,8 +191,8 @@ public class PrincipalActivity extends AppCompatActivity {
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
         movimentacaoRef = firebaseRef.child("movimentacoes")
-                                     .child(idUsuario)
-                                     .child(mesAnoSelecionado);
+                .child(idUsuario)
+                .child(mesAnoSelecionado);
         valueEventListenerMovimentacoes = movimentacaoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -38,7 +38,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         //Remove a barra de status que contém a hora, data, notificações
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         campoNome = findViewById(R.id.editNome);
         campoEmail = findViewById(R.id.editEmail);
@@ -84,55 +84,55 @@ public class CadastroActivity extends AppCompatActivity {
     {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha())
-        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful()){
+                        if(task.isSuccessful()){
 
-                    String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
-                    usuario.setIdUsuario(idUsuario);
-                    usuario.salvar();
+                            String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                            usuario.setIdUsuario(idUsuario);
+                            usuario.salvar();
 
-                    finish();
+                            finish();
 
-                }else{
-                    //String excecao = "";
-                    try{
-                        throw task.getException();
+                        }else{
+                            //String excecao = "";
+                            try{
+                                throw task.getException();
+                            }
+                            catch (FirebaseAuthWeakPasswordException e)
+                            {
+                                //excecao = "Digite uma senha mais forte!";
+                                campoSenha.setError("Digite uma senha válida!");
+                            }
+                            catch (FirebaseAuthUserCollisionException e)
+                            {
+                                //excecao = "Esse email já existe em nossa base de dados!";
+                                campoEmail.setError("Esse e-mail já está registrado!");
+                            }
+                            catch (FirebaseAuthInvalidCredentialsException e){
+                                //excecao = "Digite um e-mail válido!";
+                                campoEmail.setError("Diga um e-mail válido!");
+                            }
+                            catch (Exception e){
+                                Toast.makeText(CadastroActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                                //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
+                                e.printStackTrace();
+                            }
+
+                            //Como não to usando a variavel excessao, não preciso usar essa linha
+                            //Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+
+
+
                     }
-                    catch (FirebaseAuthWeakPasswordException e)
-                    {
-                       //excecao = "Digite uma senha mais forte!";
-                       campoSenha.setError("Digite uma senha válida!");
-                    }
-                    catch (FirebaseAuthUserCollisionException e)
-                    {
-                       //excecao = "Esse email já existe em nossa base de dados!";
-                       campoEmail.setError("Esse e-mail já está registrado!");
-                    }
-                    catch (FirebaseAuthInvalidCredentialsException e){
-                       //excecao = "Digite um e-mail válido!";
-                       campoEmail.setError("Diga um e-mail válido!");
-                    }
-                    catch (Exception e){
-                        Toast.makeText(CadastroActivity.this,"Erro ao cadastrar usuário: " + e.getMessage(), Toast.LENGTH_LONG).show();
-
-                        //excecao = "Erro ao cadastrar usuário: " + e.getMessage();
-                        e.printStackTrace();
-                    }
-
-                    //Como não to usando a variavel excessao, não preciso usar essa linha
-                    //Toast.makeText(CadastroActivity.this, excecao, Toast.LENGTH_SHORT).show();
-
-                }
-
-
-
-
-
-            }
-        })
+                })
         ;
     }
 

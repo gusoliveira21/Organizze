@@ -1,16 +1,15 @@
 package com.githubgusoliveira21.organizze.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
@@ -74,26 +73,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public  void validarLogin(){
-    autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-    autenticacao.signInWithEmailAndPassword(usuario.getEmail(),
-                                            usuario.getSenha())
-                                            .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                                            {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if(task.isSuccessful()){
-                abrirTelaPrincipal();
-            }else{
-                Toast.makeText(LoginActivity.this,
-                        "Erro no login!",
-                        Toast.LENGTH_SHORT).show();
-            }
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        autenticacao.signInWithEmailAndPassword(usuario.getEmail(),
+                usuario.getSenha())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            abrirTelaPrincipal();
+                        }else{
+                            Toast.makeText(LoginActivity.this,
+                                    "Erro no login!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
 
-        }
-    });
+                    }
+                });
 
     }
-public void abrirTelaPrincipal(){
+    public void abrirTelaPrincipal(){
         startActivity(new Intent(this, PrincipalActivity.class));
         finish();
     }
