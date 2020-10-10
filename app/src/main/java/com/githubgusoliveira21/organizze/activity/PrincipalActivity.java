@@ -43,7 +43,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
     private DatabaseReference movimentacaoRef;
     private DatabaseReference usuarioRef;
-    private  ValueEventListener valueEventListenerUsuario;
+    private ValueEventListener valueEventListenerUsuario;
     private ValueEventListener valueEventListenerMovimentacoes;
 
     private MaterialCalendarView calendarioView;
@@ -53,13 +53,11 @@ public class PrincipalActivity extends AppCompatActivity {
     private double resumoUsuario = 0.0;
     private String mesAnoSelecionado;
 
-
     private RecyclerView recyclerView;
     private AdapterMovimentacao adapterMovimentacao;
     private List<Movimentacao> movimentacoes = new ArrayList<>();
 
     private Movimentacao movimentacao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,6 +271,8 @@ public class PrincipalActivity extends AppCompatActivity {
             case R.id.menuSair :
                 autenticacao.signOut();
                 startActivity(new Intent(this,MainActivity.class));
+
+
                 finish();
                 break;
         }

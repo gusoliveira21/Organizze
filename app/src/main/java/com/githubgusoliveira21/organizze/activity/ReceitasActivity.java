@@ -47,11 +47,9 @@ public class ReceitasActivity extends AppCompatActivity {
         campoData.setText(DateCustom.dataAtual());
 
         recuperarReceitaTotal();
-
     };
 
     public void salvarReceita(View view){
-
         if(validarCamposReceita()){
 
             String data = campoData.getText().toString();
