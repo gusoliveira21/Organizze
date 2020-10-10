@@ -51,7 +51,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private ValueEventListener valueEventListenerUsuario;
     private ValueEventListener valueEventListenerMovimentacoes;
 
-<<<<<<< HEAD
+
     private MaterialCalendarView calendarioView;
     private TextView textoSaudacao, textoSaldo;
     private double despesaTotal = 0.0;
@@ -59,8 +59,6 @@ public class PrincipalActivity extends AppCompatActivity {
     private double resumoUsuario = 0.0;
     private String mesAnoSelecionado;
 
-=======
->>>>>>> 3c738d0fc6fbd594e856e8442e45e7490393dbb6
     private RecyclerView recyclerView;
     private AdapterMovimentacao adapterMovimentacao;
     private List<Movimentacao> movimentacoes = new ArrayList<>();
