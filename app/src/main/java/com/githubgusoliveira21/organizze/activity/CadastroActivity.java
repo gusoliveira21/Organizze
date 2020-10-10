@@ -1,14 +1,14 @@
 package com.githubgusoliveira21.organizze.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.githubgusoliveira21.organizze.R;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
@@ -26,8 +26,8 @@ public class CadastroActivity extends AppCompatActivity {
 
     private EditText campoNome,campoEmail, campoSenha;
     private Button botaoCadastrar;
-    private Usuario usuario;
     private FirebaseAuth autenticacao;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
