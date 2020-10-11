@@ -1,18 +1,6 @@
 package com.githubgusoliveira21.organizze.model;
 
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.githubgusoliveira21.organizze.activity.CadastroActivity;
 import com.githubgusoliveira21.organizze.config.ConfiguracaoFirebase;
-import com.githubgusoliveira21.organizze.helper.Base64Custom;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 

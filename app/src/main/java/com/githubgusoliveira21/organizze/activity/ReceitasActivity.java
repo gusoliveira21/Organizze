@@ -50,12 +50,9 @@ public class ReceitasActivity extends AppCompatActivity {
     };
 
     public void salvarReceita(View view){
-<<<<<<< HEAD
-=======
 
         Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
 
->>>>>>> 3c738d0fc6fbd594e856e8442e45e7490393dbb6
         if(validarCamposReceita()){
 
 
