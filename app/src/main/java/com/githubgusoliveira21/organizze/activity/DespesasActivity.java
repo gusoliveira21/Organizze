@@ -86,6 +86,8 @@ public class DespesasActivity extends AppCompatActivity {
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
 
+        campoData.setText(DateCustom.dataAtual());
+
         if (!textoValor.isEmpty()){
             if(!textoCategoria.isEmpty()){
                 if(!textoDescricao.isEmpty()){
