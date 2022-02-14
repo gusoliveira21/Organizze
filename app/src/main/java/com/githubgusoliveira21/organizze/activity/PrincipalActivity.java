@@ -67,8 +67,6 @@ public class PrincipalActivity extends AppCompatActivity {
         toolbar.setTitle("Organize-se");
         setSupportActionBar(toolbar);
 
-        Toast.makeText(this, "On Create!", Toast.LENGTH_SHORT).show();
-
         textoSaudacao = findViewById(R.id.textSaudacao);
         textoSaldo = findViewById(R.id.textSaldo);
         calendarView = findViewById(R.id.calendarView);
@@ -91,8 +89,6 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "On Start!", Toast.LENGTH_SHORT).show();
-
         recuperaResumo();
         recuperarMovimentacoes();
     }
@@ -100,9 +96,6 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
-        Toast.makeText(this, "On Stop!", Toast.LENGTH_SHORT).show();
-
         usuarioRef.removeEventListener(valueEventListenerUsuario);
         movimentacaoRef.removeEventListener(valueEventListenerMovimentacoes);
     }
@@ -277,14 +270,11 @@ public class PrincipalActivity extends AppCompatActivity {
                 autenticacao.signOut();
                 startActivity(new Intent(this,MainActivity.class));
 
-
                 finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
     public void adicionarDespesa(View view){
         startActivity(new Intent(this, DespesasActivity.class));

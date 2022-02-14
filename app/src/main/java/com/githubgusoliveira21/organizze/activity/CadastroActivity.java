@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
+
     private EditText campoNome,campoEmail, campoSenha;
     private Button botaoCadastrar;
     private Usuario usuario;

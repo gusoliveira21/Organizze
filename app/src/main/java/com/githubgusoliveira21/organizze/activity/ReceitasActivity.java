@@ -33,8 +33,7 @@ public class ReceitasActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receitas);
 
@@ -51,17 +50,12 @@ public class ReceitasActivity extends AppCompatActivity {
 
     public void salvarReceita(View view){
 
-        Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, campoData.getText().toString(), Toast.LENGTH_SHORT).show();
 
         if(validarCamposReceita()){
-
-
             String data = campoData.getText().toString();
-
             Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
-
             double valorRecuperado = Double.parseDouble(campoValor.getText().toString());
-
             //movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
             movimentacao = new Movimentacao();
             movimentacao.setValor(valorRecuperado);
@@ -83,7 +77,6 @@ public class ReceitasActivity extends AppCompatActivity {
     };
 
     public boolean validarCamposReceita(){
-
         String textoValor = campoValor.getText().toString();
         String textoData = campoData.getText().toString();
         String textoCategoria = campoCategoria.getText().toString();
